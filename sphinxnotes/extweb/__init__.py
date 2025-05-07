@@ -12,6 +12,7 @@
 from typing import List
 from docutils import nodes
 from urllib.parse import urlencode
+from importlib.metadata import version
 
 from sphinx.util import logging
 from sphinx.util.docutils import SphinxDirective
@@ -58,3 +59,5 @@ def html_visit_bilibili_node(self, node:bilibili_node):
 def setup(app):
     app.add_node(bilibili_node, html=(html_visit_bilibili_node, None))
     app.add_directive('bilibili', BilibiliDirective)
+
+    return {'version': version('sphinxnotes.extweb')}
